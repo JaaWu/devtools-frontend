@@ -19,3 +19,5 @@ npm-debug.log
 package-lock.json
 .vscode
 /front_end/*/jsconfig.json
+*.iml
+.idea
