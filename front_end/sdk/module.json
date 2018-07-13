@@ -291,6 +291,7 @@
         "TracingModel.js",
         "OverlayModel.js",
         "RuntimeModel.js",
+        "SanDOMModel.js",
         "ScreenCaptureModel.js",
         "Script.js",
         "ServiceWorkerCacheModel.js",

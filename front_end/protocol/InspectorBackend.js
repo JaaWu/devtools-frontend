@@ -347,6 +347,17 @@ Protocol.TargetBase = class extends Common.Object {
 
     const messageObject = /** @type {!Object} */ ((typeof message === 'string') ? JSON.parse(message) : message);
 
+
+    if (this._id !== 'main') {
+      //  slave 断开连接事件
+      if (messageObject.method == "Inspector.detached") {
+        if (messageObject.params && messageObject.params.reason == "target_closed") {
+          return;
+        }
+      }
+    }
+
+
     if ('id' in messageObject) {  // just a response for some request
       const callback = this._callbacks[messageObject.id];
       if (!callback) {
@@ -609,7 +620,9 @@ Protocol.InspectorBackend._AgentPrototype = class {
      * @param {string} message
      */
     function onError(message) {
-      console.error(message);
+      if (message.indexOf('Protocol Error:') === -1) {
+        console.error(message);
+      }
       errorMessage = message;
     }
     const params = this._prepareParameters(method, signature, args, onError);

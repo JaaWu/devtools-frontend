@@ -1,5 +1,5 @@
 # Chrome DevTools frontend Build Tools
-chrome inspector 静态资源自动生成工具
+chrome inspector 静态资源自动生成工具  -- 百度智能小程序专用
 
 
 利用 gulp 编译打包 chromium 中 inspector 源码

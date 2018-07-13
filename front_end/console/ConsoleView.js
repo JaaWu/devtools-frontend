@@ -225,6 +225,7 @@ Console.ConsoleView = class extends UI.VBox {
     SDK.consoleModel.addEventListener(SDK.ConsoleModel.Events.MessageUpdated, this._onConsoleMessageUpdated, this);
     SDK.consoleModel.addEventListener(SDK.ConsoleModel.Events.CommandEvaluated, this._commandEvaluated, this);
     SDK.consoleModel.messages().forEach(this._addConsoleMessage, this);
+    SDK.consoleModel.requestClearMessages();
   }
 
   /**
