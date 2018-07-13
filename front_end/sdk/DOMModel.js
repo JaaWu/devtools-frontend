@@ -1357,8 +1357,10 @@ SDK.DOMModel = class extends SDK.SDKModel {
    */
   _setDocument(payload) {
     this._idToDOMNode = {};
-    if (payload && 'nodeId' in payload)
-      this._document = new SDK.DOMDocument(this, payload);
+      if (payload && 'nodeId' in payload) {
+        SDK.DOMModel.SanDOMModel.setDocument(payload);
+        this._document = new SDK.DOMDocument(this, payload);
+      }
     else
       this._document = null;
     SDK.domModelUndoStack._dispose(this);
@@ -1386,7 +1388,7 @@ SDK.DOMModel = class extends SDK.SDKModel {
       this._setDetachedRoot(payloads[0]);
       return;
     }
-
+    SDK.DOMModel.SanDOMModel.setChildNodes(payloads);
     const parent = this._idToDOMNode[parentId];
     parent._setChildrenPayload(payloads);
   }

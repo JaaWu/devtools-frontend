@@ -1,6 +1,7 @@
 {
   "modules" : [
-    { "name": "screencast", "type": "autostart" }
+    { "name": "screencast", "type": "autostart" },
+    { "name": "adb_custom", "type": "autostart" }
   ],
   "extends": "devtools_app",
   "has_html": true
