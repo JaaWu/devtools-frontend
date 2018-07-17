@@ -43,7 +43,8 @@ SDK.NetworkManager = class extends SDK.SDKModel {
     if (Common.moduleSetting('cacheDisabled').get())
       this._networkAgent.setCacheDisabled(true);
 
-    this._networkAgent.enable(undefined, undefined, SDK.NetworkManager.MAX_EAGER_POST_REQUEST_BODY_LENGTH);
+    // this._networkAgent.enable(undefined, undefined, SDK.NetworkManager.MAX_EAGER_POST_REQUEST_BODY_LENGTH);
+    this._networkAgent.enable();
 
     this._bypassServiceWorkerSetting = Common.settings.createSetting('bypassServiceWorker', false);
     if (this._bypassServiceWorkerSetting.get())
