@@ -1,0 +1,16 @@
+{
+  "name": "devtools-frontend",
+  "version": "2.0.0-1",
+  "description": "chrome devtools-frontend",
+  "main": "index.js",
+  "keywords": [
+    "devtools frontend smartapp remote debug"
+  ],
+  "author": "songyaru",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songyaru/devtools-frontend/tree/smartapp"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}

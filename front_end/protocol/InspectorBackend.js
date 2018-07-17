@@ -350,12 +350,24 @@ Protocol.TargetBase = class extends Common.Object {
 
     if (this._id !== 'main') {
       //  slave 断开连接事件
-      if (messageObject.method == "Inspector.detached") {
+      if (messageObject.method === "Inspector.detached") {
         if (messageObject.params && messageObject.params.reason == "target_closed") {
           return;
         }
       }
     }
+      if (messageObject.method === 'Network.requestWillBeSent') {
+          if (messageObject.params && messageObject.params.request) {
+              let url = messageObject.params.request.url;
+              for (let key of  ['/tcbox?', '/blank.gif?', '/v.gif?']) {
+                  if (url.includes(key)) { // todo 过滤名单
+                      return;
+                  }
+
+              }
+
+          }
+      }
 
 
     if ('id' in messageObject) {  // just a response for some request

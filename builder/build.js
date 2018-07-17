@@ -13,9 +13,8 @@ const getRealPath = name => (PATH_CONST[name] || []).map(p => getSourcePath(p)).
 const PATH_CONST = require('./path_const');
 const ROOT = path.resolve(__dirname, '../');
 const OUT = './output/devtools';
-const PROTOCOL_JSON ='./protocol.json';
-
-
+const PROTOCOL_VERSION = '-' + (process.env.PROTOCOL_VERSION || '1.3');
+const PROTOCOL_JSON = './protocol' + PROTOCOL_VERSION + '.json';
 
 
 gulp.task('devtools_frontend_resources', ['copies', 'aria_properties', 'supported_css_properties', 'frontend_protocol_sources']);
@@ -66,8 +65,8 @@ gulp.task('aria_properties', () => {
 gulp.task('protocol_version', () => {
     const script = getDepSourcePath('ConcatenateProtocols.py');
     const inputs = [
-        getDepSourcePath('browser_protocol.json'),
-        getDepSourcePath('js_protocol.json')
+        getDepSourcePath('browser_protocol' + PROTOCOL_VERSION + '.json'),
+        getDepSourcePath('js_protocol' + PROTOCOL_VERSION + '.json')
     ];
     let input = inputs.join(' ');
     const output = getOutputPath(PROTOCOL_JSON);

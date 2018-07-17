@@ -39,7 +39,7 @@ function slaveSocket(MainInstance) {
             slaveConnection['connection'] = wsConnection;
             return wsConnection;
         };
-        SDK.targetManager.createTarget('slave', 'Slave', capabilitiesForSlaveTarget(), _createSlaveConnection, null);
+        SDK.targetManager.createTarget('slave' + Math.random(), 'Slave', capabilitiesForSlaveTarget(), _createSlaveConnection, null);
 
         MainInstance.slaveConnections.push(slaveConnection);
         return slaveConnection;
