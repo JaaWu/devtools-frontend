@@ -1,12 +1,3 @@
-/*
- * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
- */
-/*
- * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
- */
-
-
-
 function slaveSocket(MainInstance) {
     MainInstance.slaveConnections = MainInstance.slaveConnections || [];
     const capabilitiesForSlaveTarget = () => {
