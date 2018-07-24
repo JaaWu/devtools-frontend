@@ -1,7 +1,3 @@
-/*
- * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
- */
-
 /*!
  * Socket.IO v2.1.1
  * (c) 2014-2018 Guillermo Rauch
