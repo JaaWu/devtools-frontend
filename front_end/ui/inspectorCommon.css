@@ -418,54 +418,13 @@ label[is=dt-icon-label] {
     background-color: #d5d5d5;
 }
 
-#elements-content > div.show,
-#elements-content > div:last-child {
-    display: block;
-}
-
 #elements-content > div,
-#elements-content > div:first-child,
 #elements-content > div.hide,
 #elements-content > div.hide:last-child {
     display: none;
 }
 
-
 #elements-content > div.show,
 #elements-content > div:last-child {
     display: block;
 }
-
-#elements-content > div,
-#elements-content > div:first-child,
-#elements-content > div.hide,
-#elements-content > div.hide:last-child {
-    display: none;
-}
-
-
-#elements-content > div.show,
-#elements-content > div:last-child {
-    display: block;
-}
-
-#elements-content > div,
-#elements-content > div:first-child,
-#elements-content > div.hide,
-#elements-content > div.hide:last-child {
-    display: none;
-}
-
-
-#elements-content > div.show,
-#elements-content > div:last-child {
-    display: block;
-}
-
-#elements-content > div,
-#elements-content > div:first-child,
-#elements-content > div.hide,
-#elements-content > div.hide:last-child {
-    display: none;
-}
-
