@@ -4,6 +4,12 @@ chrome inspector 静态资源自动生成工具  -- 百度智能小程序专用
 
 利用 gulp 编译打包 chromium 中 inspector 源码
 
+## build 依赖
+
+```shell
+pip install json5
+```
+
 ## 使用方式
 执行：
 ```shell 

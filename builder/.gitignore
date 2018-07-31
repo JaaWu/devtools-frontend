@@ -1,6 +1,6 @@
 .idea
 /node_modules
-/output/devtools/*
+/output/devtools
 *.iml
 package-lock.json
 

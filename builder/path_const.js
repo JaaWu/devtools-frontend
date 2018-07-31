@@ -439,6 +439,7 @@ const all_devtools_files = [
     'front_end/object_ui/customPreviewComponent.css',
     'front_end/object_ui/CustomPreviewComponent.js',
     'front_end/object_ui/JavaScriptAutocomplete.js',
+    "front_end/object_ui/JavaScriptREPL.js",
     'front_end/object_ui/module.json',
     'front_end/object_ui/objectPopover.css',
     'front_end/object_ui/ObjectPopoverHelper.js',
