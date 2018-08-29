@@ -3,6 +3,7 @@
         "common"
     ],
     "scripts": [
+        "devtools_compatibility.js",
         "adb_custom.js",
         "adb_slave_socket.js",
         "socket.io.js"

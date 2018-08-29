@@ -13,6 +13,12 @@ function slaveSocket(MainInstance) {
             isActive = true;
         }
 
+        let existConnection = getSlaveConnectionBySocketUrl(url);
+        if (existConnection) {
+            existConnection['connection']['isActive'] = isActive;
+            return existConnection;
+        }
+
         const slaveConnection = {};
         slaveConnection['url'] = url;
 
@@ -115,12 +121,20 @@ function slaveSocket(MainInstance) {
                         if (webSocketDebuggerUrl) {
                             // 从接口返回的数组中寻找第一个没有建立 ws 连接的 slave 页面
                             // 如：启动的第一个 slave 页面
-                            if (!getSlaveConnectionBySocketUrl(webSocketDebuggerUrl)) {
+                            let exitSlaveConnection = getSlaveConnectionBySocketUrl(webSocketDebuggerUrl);
+                            if (!exitSlaveConnection) {
                                 unActiveCurrentSlaveConnection();
                                 newConnection = createSlaveConnection(webSocketDebuggerUrl);
                                 if (slaveId) {
                                     newConnection.slaveId = slaveId
                                 }
+                                break;
+                            } else if (slaveId && exitSlaveConnection.slaveId == null) {
+                                // 处理特殊情况，如果首次启动页面的 slaveId 没有得到后面经过页面跳转再次回到了首页
+                                // 此时通过 'slave-visible' 消息得到了该页面的 slaveId ，需要设置上去
+                                newConnection = exitSlaveConnection;
+                                newConnection.slaveId = slaveId;
+                                newConnection['connection']['isActive'] = true;
                                 break;
                             }
                         }

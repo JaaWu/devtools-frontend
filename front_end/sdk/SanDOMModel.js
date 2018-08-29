@@ -1,14 +1,10 @@
-/*
- * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
- */
-
-
 SDK.DOMModel.SanDOMModel = {
 
     _filterNode: function (node) {
         if (node.nodeName.indexOf('SWAN') === -1
             && node.nodeName !== 'SCROLL-VIEW'
             && node.nodeName !== 'DIV'
+            && node.nodeName !== 'SPAN'
             && node.nodeName !== '#text') {
             return true;
         }
@@ -32,7 +28,7 @@ SDK.DOMModel.SanDOMModel = {
     _processAttribute: function (attributes) {
         for (var i = 0; i < attributes.length; i += 2) {
             var key = attributes[i], value = attributes[i + 1];
-            if ((key === 'id' && value.indexOf('_san_') !== -1) || value === '') {
+            if ((key === 'id' && /^_/.test(value)) || value === '') {
                 attributes.splice(i, 2);
                 i -= 2;
             }
@@ -43,6 +39,9 @@ SDK.DOMModel.SanDOMModel = {
     },
 
     setChildNodes: function (payloads) {
+        if (!window.isSmartApp) {
+            return;
+        }
         var nodes = payloads;
         for (var i = 0; i < nodes.length; i++) {
             var child = nodes[i];
@@ -53,15 +52,17 @@ SDK.DOMModel.SanDOMModel = {
             }
 
 
-            child.nodeName = child.nodeName.replace('SWAN-', '');
-            child.localName = child.localName.replace('swan-', '');
-            if(child.attributes){
+            child.nodeName = child.nodeName.replace('SWAN-', '').toLocaleLowerCase();
+            if (child.attributes) {
                 this._processAttribute(child.attributes);
             }
 
         }
     },
     setDocument: function (payload) {
+        if (!window.isSmartApp) {
+            return;
+        }
         var children = payload.children;
         var body;
         for (var i = 0; i < children.length; i++) {
@@ -74,9 +75,10 @@ SDK.DOMModel.SanDOMModel = {
         if (body) {
             body.nodeName = 'page';
             body.localName = 'page';
+
             payload.children = [body];
         }
-    },
+    }
 
 
 }
